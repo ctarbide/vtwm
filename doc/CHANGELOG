@@ -3,6 +3,11 @@ A COMPLETE LISTING OF CHANGES MADE TO VTWM SINCE VERSION 5.0
 IN CHRONOLOGICAL ORDER FROM MOST RECENT CHANGES TO EARLIEST.
 ============================================================
 
+    2016-2017
+	Fix non-sticky menu bug
+	Provide sane window manager hints if none provided
+	Fix popup menu bug
+	Improve font spacing on small screens
     June 2013
 	Seth Robertson - create f.resizeto to allow canned resizes
     March 2013
