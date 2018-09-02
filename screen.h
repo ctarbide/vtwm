@@ -392,6 +392,7 @@ typedef struct ScreenInfo
     unsigned int IconifyByUnmapping:1;
     unsigned int InterpolateMenuColors:1;
     unsigned int LessRandomZoomZoom:1;
+    unsigned int MenuHighlight:1;
     unsigned int NamesInVirtualDesktop:1;
     unsigned int NoBorderDecorations:1;
     unsigned int NoBorders:1;
@@ -473,6 +474,7 @@ typedef struct ScreenInfo
 #define IconifyByUnmapping			userflags.IconifyByUnmapping
 #define InterpolateMenuColors			userflags.InterpolateMenuColors
 #define LessRandomZoomZoom			userflags.LessRandomZoomZoom
+#define MenuHighlight				userflags.MenuHighlight
 #define NamesInVirtualDesktop			userflags.NamesInVirtualDesktop
 #define NoBorderDecorations			userflags.NoBorderDecorations
 #define NoBorders				userflags.NoBorders

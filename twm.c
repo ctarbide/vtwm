@@ -1201,6 +1201,7 @@ InitVariables(void)
   Scr->ZoomCount = 8;
   Scr->SortIconMgr = FALSE;
   Scr->Shadow = TRUE;
+  Scr->MenuHighlight = FALSE;
   Scr->InterpolateMenuColors = FALSE;
   Scr->NoIconManagers = FALSE;
   Scr->NoIconifyIconManagers = FALSE;

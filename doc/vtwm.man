@@ -1165,6 +1165,11 @@ The default is \fI"-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"\fP.
 This variable specifies the foreground color used for menus, and can only be
 specified inside of a \fBColor\fP or \fBMonochrome\fP list.  The default is
 \&\fI"gray85"\fP.
+.IP "\fBMenuHighlight\fP" 8
+This variable enables highlighting of selected menu items using the legacy
+inverse colours mechanism rather than the just using shading and a 3D surround,
+which can be hard to see with some colour combinations. 3D effect is still used
+as the selected item border, if enabled.
 .IP "\fBMenuOpacity\fP \fIvalue\fP
 This integer \fIvalue\fP (in range 0...255 corresponding to transparent...opaque)
 is used to set the _NET_WM_WINDOW_OPACITY property

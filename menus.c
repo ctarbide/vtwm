@@ -1246,10 +1246,14 @@ MakeMenu(MenuRoot * mr)
     XColor xcol;
     char colname[32];
 
-    xcol.pixel = Scr->MenuC.back;
-    XQueryColor(dpy, cmap, &xcol);
-    sprintf(colname, "#%04x%04x%04x", 5 * (xcol.red / 6), 5 * (xcol.green / 6), 5 * (xcol.blue / 6));
-    GetColorAlways(Scr->Monochrome, &mr->highlight.back, colname);
+    /* If MenuHighlight is enabled, don't auto-darken selected item */
+    if (!Scr->MenuHighlight)
+    {
+	xcol.pixel = Scr->MenuC.back;
+	XQueryColor(dpy, cmap, &xcol);
+	sprintf(colname, "#%04x%04x%04x", 5 * (xcol.red / 6), 5 * (xcol.green / 6), 5 * (xcol.blue / 6));
+	GetColorAlways(Scr->Monochrome, &mr->highlight.back, colname);
+    }
   }
 
   if (Scr->MenuBevelWidth > 0 && (Scr->Monochrome == COLOR) && (mr->highlight.fore == UNUSED_PIXEL))
@@ -1257,13 +1261,28 @@ MakeMenu(MenuRoot * mr)
     XColor xcol;
     char colname[32];
 
-    xcol.pixel = Scr->MenuC.fore;
-    XQueryColor(dpy, cmap, &xcol);
-    sprintf(colname, "#%04x%04x%04x", 5 * (xcol.red / 6), 5 * (xcol.green / 6), 5 * (xcol.blue / 6));
-    GetColorAlways(Scr->Monochrome, &mr->highlight.fore, colname);
+    /* If MenuHighlight is enabled, don't auto-darken selected item */
+    if (!Scr->MenuHighlight)
+    {
+	xcol.pixel = Scr->MenuC.fore;
+	XQueryColor(dpy, cmap, &xcol);
+	sprintf(colname, "#%04x%04x%04x", 5 * (xcol.red / 6), 5 * (xcol.green / 6), 5 * (xcol.blue / 6));
+	GetColorAlways(Scr->Monochrome, &mr->highlight.fore, colname);
+    }
   }
   if (Scr->MenuBevelWidth > 0 && !Scr->BeNiceToColormap)
-    GetShadeColors(&mr->highlight);
+  {
+    if (!Scr->MenuHighlight)
+	GetShadeColors(&mr->highlight);
+    else
+    {
+	/* If highlighting menu, still initialize 3D bevel, but use historical inverse color to highlight */
+	ColorPair tcp = Scr->MenuC;
+	GetShadeColors(&tcp);
+	mr->highlight.shadc = tcp.shadc;
+	mr->highlight.shadd = tcp.shadd;
+    }
+  }
 
   /* get the default colors into the menus */
   for (tmp = mr->first; tmp != NULL; tmp = tmp->next)
@@ -1497,23 +1516,15 @@ PopUpMenu(MenuRoot * menu, int x, int y, Bool center)
 
 	  menu->last->normal.back = WindowNames[i]->virtual.back;
 
-/**********************************************************/
-
-/*														  */
-
-/*	Okay, okay, it's a bit of a kludge.					  */
-
-/*														  */
-
-/*	On the other hand, it's nice to have the VTWM Windows */
-
-/*	menu come up with "the right colors". And the colors  */
-
-/*	from the panner are not a bad choice...				  */
-
-/*														  */
-
-/**********************************************************/
+/****************************************************************/
+/*								*/
+/*	Okay, okay, it's a bit of a kludge.			*/
+/*								*/
+/*	On the other hand, it's nice to have the VTWM Windows	*/
+/*	menu come up with "the right colors". And the colors	*/
+/*	from the panner are not a bad choice...			*/
+/*								*/
+/****************************************************************/
 	}
       }
       free(WindowNames);

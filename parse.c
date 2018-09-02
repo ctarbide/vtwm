@@ -489,6 +489,7 @@ typedef struct _TwmKeyword
 #define kw0_UnzoomToScreen			73
 #define kw0_AutoResizeKeepOnScreen		74
 #define kw0_NoStormPositioning			75
+#define kw0_MenuHighlight			76
 
 #define kws_IconFont				2
 #define kws_ResizeFont				3
@@ -815,6 +816,7 @@ static TwmKeyword keytable[] = {
   {"menubevelwidth", NKEYWORD, kwn_MenuBevelWidth},
   {"menufont", SKEYWORD, kws_MenuFont},
   {"menuforeground", CKEYWORD, kwc_MenuForeground},
+  {"menuhighlight", KEYWORD, kw0_MenuHighlight},
   {"menuiconpixmap", MENUICONMAP, 0},
 #ifdef TWM_USE_OPACITY
   {"menuopacity", NKEYWORD, kwn_MenuOpacity}, //#ifdef TWM_USE_OPACITY
@@ -1082,6 +1084,11 @@ do_single_keyword(int keyword)
     case kw0_NoMenuShadows:
       if (Scr->FirstTime)
 	Scr->Shadow = FALSE;
+      return 1;
+
+    case kw0_MenuHighlight:
+      if (Scr->FirstTime)
+	Scr->MenuHighlight = TRUE;
       return 1;
 
     case kw0_NoRaiseOnMove:
