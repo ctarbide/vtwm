@@ -46,7 +46,7 @@
 #include "events.h"
 #include "resize.h"
 #include "parse.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "image_formats.h"
 #include "util.h"
 #include "screen.h"

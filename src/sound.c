@@ -36,7 +36,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include "gram.h"
+#include "gram.tab.h"
 #include "parse.h"
 #include "sound.h"
 #include <stdint.h>

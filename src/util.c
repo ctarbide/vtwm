@@ -65,7 +65,7 @@ in this Software without prior written authorization from The Open Group.
 #include "twm.h"
 #include "image_formats.h"
 #include "util.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "parse.h"
 #include "screen.h"
 #include "list.h"

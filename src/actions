@@ -1,0 +1,82 @@
+
+=all
+,.PHONY: all
+,all: $(C_PROGRAMS)
+@
+
+=vtwm
+type c-program
+dependency config.h
+dependency lex.c
+dependency deftwmrc.c
+dependency lastmake.c
+dependency version.c
+dependency util.c
+dependency gram.tab.c
+dependency add_window.c
+dependency applets.c
+dependency cursor.c
+dependency desktop.c
+dependency doors.c
+dependency events.c
+dependency gc.c
+dependency iconmgr.c
+dependency icons.c
+dependency image_formats.c
+dependency list.c
+dependency menus.c
+dependency parse.c
+dependency regions.c
+dependency resize.c
+dependency sound.c
+dependency twm.c
+@
+
+=gram.tab
+,gram.tab.h gram.tab.c: actions gram.y
+,	$(YACC) $(YFLAGS) -b gram '$(SRC_PREFIX)gram.y'
+@
+
+=lex.c
+,lex.c: actions lex.l
+,	$(LEX) -o lex.c '$(SRC_PREFIX)lex.l'
+@
+
+=deftwmrc.c
+,deftwmrc.c: actions system.vtwmrc
+,	$(RM) $@
+,	$(ECHO) '/* ' >>$@
+,	$(ECHO) ' * This file is generated automatically from the default' >>$@
+,	$(ECHO) ' * VTWM bindings file system.vtwmrc.'$(SYS_VTWMRC_LOOK)' by the VTWM Makefile.' >>$@
+,	$(ECHO) ' */' >>$@
+,	$(ECHO) '' >>$@
+,	$(ECHO) 'char *defTwmrc[] = {' >>deftwmrc.c
+,	$(SED) -e '/^$$/d' -e '/^#/d' -e 's/"/\\"/g' -e 's/^/"/' -e 's/$$/",/' -e 's/[     ]\{1,\}/ /g' -e 's/^" /"/' system.vtwmrc >>$@
+,	$(ECHO) '(char *)0 };' >>$@
+@
+
+=lastmake.c
+,lastmake.c: actions
+,	$(RM) $@
+,	$(ECHO) '/* ' >>$@
+,	$(ECHO) ' * This file is generated automatically by the VTWM Makefile.' >>$@
+,	$(ECHO) ' */' >>$@
+,	$(ECHO) '' >>$@
+,	$(ECHO) 'char *lastmake[] = {' >>lastmake.c
+,	$(ECHO) '    "Platform:  '`uname -r -s`'",' >>$@
+,	$(ECHO) '    "Build:  '`date`'",' >>$@
+,	$(ECHO) '    "" };' >>$@
+@
+
+=system.vtwmrc
+,system.vtwmrc: actions
+,	$(RM) $@
+,	$(CP) '$(SRC_PREFIX)$@.$(SYS_VTWMRC_LOOK)' $@
+@
+
+=clean
+,.PHONY: clean
+,clean:
+,	$(RM) *.$(OBJEXT) *-all.c $(C_PROGRAMS)
+,	$(RM) lex.c gram.tab.h gram.tab.c lastmake.c deftwmrc.c
+@

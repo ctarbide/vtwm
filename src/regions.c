@@ -36,7 +36,7 @@
 #include "screen.h"
 #include "list.h"
 #include "regions.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "parse.h"
 #include "image_formats.h"
 #include "util.h"

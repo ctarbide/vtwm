@@ -1,10 +1,28 @@
 
+ABOUT
+=====
+
+  - This is a fork of vtwm that is intended to keep track of the
+    oficial sources, but uses a different build system
+
+      - synchronized with commit 70991cc from 2018-09-02 (1)
+
+      - (1): https://sourceforge.net/p/vtwm/code/ci/70991cca915cdd7b5da1f78d18fb97d5bc7dff96/
+
+
 BUILDING VTWM 5.5
 =================
 
-  - Unpack the distribution. You've likely done that already, no?
+  - Customize the build by editing 'vars-host' file
 
-  - Consider running `./configure && make` or alternately:
+  - Run ./build.sh (also supports out of source tree builds)
+
+      - the build system is self contained and depends only on
+	a posix shell, awk (nawk or gawk) and make (bmake or
+	gmake should work), it should be straightforward to
+	troubleshoot, adapt and customize
+
+  - Run ./install.sh (installation prefix is in 'vars-host')
 
   - Determine if you have the XPM library installed:
       - The library is usually found in /usr/X11R6/lib, /usr/local/lib,
@@ -28,24 +46,6 @@ BUILDING VTWM 5.5
         or some such directory. It's usually called "librplay.a".
       - The header file is usually found in /usr/local/include,
         /usr/include, or some such directory. It's "rplay.h".
-
-  - Determine if you have the m4 macro processor installed:
-      - Issuing 'whence m4' or 'which m4' ought to do it.
-
-  - Look over Imakefile, and edit to taste. If you use a VNC client, or
-    Cygwin under MS-Windows, you may want to make changes as described
-    further down in this file. Or particular interest to some people
-    will be the installation path which can be changed by editing
-    VTWMBINDIR. See also VTWMLIBDIR and VTWMMANDIR. This will allow
-    installation to other than the system X11 directories where you don't
-    have root access.
-
-  - Issue 'xmkmf'. If that doesn't work (you'll know it), you'll have
-    to copy Makefile.QNX to Makefile, and edit the latter to taste.
-
-  - Issue 'make'. This shouldn't take very long at all; VTWM is small.
-    Should the build break, check further down in this file. If it still
-    breaks, ask a friend. If it _still_ breaks, you can write me.
 
   - The sysrc_add_apps.sh script in contrib/support/ may be of help in
     customizing the default system resource file. It automagically adds

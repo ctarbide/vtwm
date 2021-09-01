@@ -1,0 +1,42 @@
+
+Copyright (c) 2021, C. Tarbide.
+All rights reserved.
+
+Permission to distribute and use this work for any
+purpose is hereby granted provided this copyright
+notice is included in the copy.  This work is provided
+as is, with no warranty of any kind.
+
+=vars
+,PREFIX = $(HOME)/local
+
+,SYS_VTWMRC_LOOK = 3D     # 3D/2D
+,VTWMLIBDIR = $(PREFIX)/share/vtwm
+
+,CC = gcc
+,CFLAGS = -Wall -c -std=c99 \
+,    '-DSYSTEM_VTWMRC="'$(VTWMLIBDIR)'/system.vtwmrc"' \
+,    '-DSYSTEM_TWMRC="'$(VTWMLIBDIR)'/system.twmrc"'
+
+,LD = gcc
+,LDFLAGS =
+,LIBS = -lm -lX11 -lXmu -lXext -lXpm -lpng
+
+,ECHO = echo
+,CP = cp -f
+,MV = mv -f
+,RM = rm -f
+,CHMOD_0755 = chmod 0755
+
+,SED = sed
+,LEX = flex
+
+,YACC = yacc
+,YFLAGS = -d
+@
+
+=extra-vars
+internal-vars
+,
+,AWK=$(BUILD_AWK)
+@

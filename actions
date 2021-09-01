@@ -1,0 +1,19 @@
+
+=all
+,.PHONY: all
+,all: src
+@
+
+=src
+,.PHONY: src
+,src:
+,	$(MAKE) -C src
+@
+
+=install
+,.PHONY: install
+,install:
+,	$(INSTALL) -D -m 644 src/system.vtwmrc '$(DESTDIR)$(VTWMLIBDIR)/system.vtwmrc'
+,	$(INSTALL) -D -m 755 src/vtwm '$(DESTDIR)$(PREFIX)/bin/vtwm'
+,
+@

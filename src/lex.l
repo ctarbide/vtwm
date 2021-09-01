@@ -37,7 +37,7 @@
  ***********************************************************************/
 
 /* #include <stdio.h> */		/* lex already includes stdio.h */
-#include "gram.h"
+#include "gram.tab.h"
 #include "parse.h"
 #include "twm.h"
 #include "screen.h"

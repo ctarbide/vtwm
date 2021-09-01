@@ -59,7 +59,7 @@
 #include "image_formats.h"
 #include "util.h"
 #include "parse.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "screen.h"
 #include "doors.h"
 #include "desktop.h"

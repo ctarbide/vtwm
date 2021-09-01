@@ -50,7 +50,7 @@
 #include "events.h"
 #include "image_formats.h"
 #include "util.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "screen.h"
 #include "iconmgr.h"
 #include "desktop.h"

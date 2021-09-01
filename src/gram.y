@@ -61,7 +61,7 @@
 #define isascii(c) ((0 <= (int)(c)) && ((int)(c) <= 127))
 #endif
 
-static char *Action = "";
+char *Action = "";
 static char *Name = "";
 static MenuRoot	*root, *pull = NULL;
 

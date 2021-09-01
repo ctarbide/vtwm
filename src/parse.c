@@ -47,7 +47,7 @@
 #include "list.h"
 #include "image_formats.h"
 #include "util.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "parse.h"
 #include "prototypes.h"
 #include <X11/Xatom.h>

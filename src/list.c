@@ -56,7 +56,7 @@
 #include "twm.h"
 #include "screen.h"
 #include "list.h"
-#include "gram.h"
+#include "gram.tab.h"
 #include "prototypes.h"
 
 #define REGCOMP_FLAGS		(REG_EXTENDED | REG_NOSUB)
